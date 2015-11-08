@@ -3,6 +3,7 @@ package com.tsubu_nagoya.ilike;
 import android.content.ContentResolver;
 import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -11,6 +12,10 @@ import android.widget.GridView;
 
 import com.tsubu_nagoya.ilike.ilike.R;
 
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 
 public class MainActivity extends ActionBarActivity {
@@ -30,20 +35,16 @@ public class MainActivity extends ActionBarActivity {
 
     private ArrayList<Bitmap> load() {
         ArrayList<Bitmap> list = new ArrayList<Bitmap>();
-        ContentResolver cr = getContentResolver();
-        Uri uri = MediaStore.Images.Media.INTERNAL_CONTENT_URI;
-        ContentResolver resolver = new ContentResolver(getApplicationContext()) {
-
-        };
-        Cursor c = resolver.query(uri, null, null, null, null);
-  //      Cursor c = managedQuery(uri, null, null, null, null);
-        c.moveToFirst();
-        for (int i = 0; i < c.getCount(); i++) {
-            long id = c.getLong(c.getColumnIndexOrThrow("_id"));
-            Bitmap bmp = MediaStore.Images.Thumbnails.getThumbnail(cr, id, MediaStore.Images.Thumbnails.MICRO_KIND, null);
-            list.add(bmp);
-            c.moveToNext();
-        }
+            ContentResolver cr = getContentResolver();
+            Uri uri = Uri.parse("http://lp.spartacamp.jp/201510_java/img/Android-logo_t.png");
+            try {
+                InputStream in = cr.openInputStream(uri);
+                Bitmap image = BitmapFactory.decodeStream(in);
+                in.close();
+                list.add(image);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         return list;
     }
 }
