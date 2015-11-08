@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
 
-        <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
+        <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/app_id"/>
 
         <activity android:name="com.facebook.FacebookActivity"
             android:configChanges=
@@ -23,15 +23,16 @@
         <activity
             android:name="com.tsubu_nagoya.ilike.MainActivity"
             android:label="@string/title_activity_main" >
+        </activity>
+
+        <activity
+            android:name="com.tsubu_nagoya.ilike.Main2Activity"
+            android:label="@string/title_activity_main2" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity
-            android:name="com.tsubu_nagoya.ilike.Main2Activity"
-            android:label="@string/title_activity_main2" >
         </activity>
 
         <provider android:authorities="com.facebook.app.FacebookContentProvider1159393247422374"
