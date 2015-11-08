@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">ILike</string>
     <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="app_id">1159393247422374</string>
+
 </resources>
